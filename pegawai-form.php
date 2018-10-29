@@ -1,7 +1,11 @@
 <?php
 // ambil data pegawai dari database
 // kemudian simpan ke array $data
-if (isset($_GET['id'])) $id = $_GET['id'];
+if (isset($_GET['id'])) 
+    $id = $_GET['id'];
+else 
+    $id = 0;
+
 $sql = "select * from pegawai where id='".htmlspecialchars($id)."'";
 $rs = mysqli_query($db_conn,$sql);
 if ($row = mysqli_fetch_assoc($rs) or $_GET['action']=='create') {
