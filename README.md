@@ -4,6 +4,7 @@ Aplikasi Data Pegawai sederhana untuk mempelajari html form, post dan penyimpana
 Aplikasi hanya memasukkan komponen standar HTML Form saja, tanpa CSS stylesheet. Tujuannya adalah untuk memudahkan pemahaman pemrosesan HTML Form menggunakan PHP.
 
 ## Instalasi
+- Download atau clone repo ini, dan masukkan ke webroot
 - Create database `pegawai` menggunakan phpMyAdmin
 - Import file tables.sql ke database tersebut
 
@@ -16,6 +17,10 @@ Aplikasi hanya memasukkan komponen standar HTML Form saja, tanpa CSS stylesheet.
 ## Penampakan List Data
 ![Tampilan Edit Data](images/screenshot-edit.png?raw=true "Tampilan Edit Data")
 
+## Pengembangan
+Silakan clone dan buat PR 
+
+## Akhirul Kalam
 Semoga berguna!
 
 Salam,
