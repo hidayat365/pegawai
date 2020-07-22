@@ -3,8 +3,9 @@
 // kemudian simpan ke array $data
 $sql = "select * from pegawai where id='".htmlspecialchars($_GET['id'])."'";
 $rs = mysqli_query($db_conn,$sql);
-if ($row = mysqli_fetch_assoc($rs)) {
 ?>
+
+<?php if ($row = mysqli_fetch_assoc($rs)): ?>
 
 <h3>View Pegawai</h3>
 <form id="frmPegawai" name="frmPegawai" action="pegawai-proses.php" method="post">
@@ -32,17 +33,16 @@ if ($row = mysqli_fetch_assoc($rs)) {
     <tr>
         <th colspan="2">
             &nbsp;
-            <?php if ($_GET['action']=='delete') { ?>
-				<input type="submit" name="btnHapusPegawai" value="Hapus" style="width: 100px;" />
+            <?php if ($_GET['action']=='delete'): ?>
+                <input type="submit" name="btnHapusPegawai" value="Hapus" style="width: 100px;" />
                 <input type="hidden" name="id" value="<?php print $row['id']; ?>" />
                 <input type="hidden" name="action" value="delete" />
-            <?php } ?>
+            <?php endif; ?>
             <a href="index.php?f=pegawai-list">Kembali ke Daftar Pegawai</a>
             &nbsp;
         </th>
     </tr>
-    <?php
-    } // end while
-    ?>
     </table>
 </form>
+
+<?php endif; ?>
