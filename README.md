@@ -29,6 +29,8 @@ Untuk menghidari serangan *SQL Injection* maka kita harus mengubah pola pembuata
 
 ```
 $sql = 'select * from pegawai where id=' . $id;
+$rs = mysqli_query($db_conn, $sql);
+$row = mysqli_fetch_assoc($rs);
 ```
 
 menggunakan *parameter binding* seperti berikut ini, 
