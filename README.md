@@ -5,23 +5,27 @@ Aplikasi hanya memasukkan komponen standar HTML Form saja, tanpa CSS stylesheet.
 
 ## Instalasi
 - Download atau clone repo ini, dan masukkan ke webroot
-- Create database `pegawai` menggunakan phpMyAdmin
-- Import file tables.sql ke database tersebut
+- Create database `pegawai` menggunakan phpMyAdmin (atau tools lain seperti HeidiSQL, Navicat, dll)
+- Import file `tables.sql` ke database tersebut
+- Akses melalui web browser
 
 ## Penampakan List Data
 ![Tampilan List Data](images/screenshot-list.png?raw=true "Tampilan List Data")
 
+## Penampakan Create Data
+![Tampilan View Data](images/screenshot-create.png?raw=true "Tampilan View Data")
+
 ## Penampakan View Data
 ![Tampilan View Data](images/screenshot-view.png?raw=true "Tampilan View Data")
 
-## Penampakan List Data
+## Penampakan Edit Data
 ![Tampilan Edit Data](images/screenshot-edit.png?raw=true "Tampilan Edit Data")
 
-## Pengembangan
+# Pengembangan
 Silakan clone dan buat PR 
 
-## Akhirul Kalam
+# Akhirul Kalam
 Semoga berguna!
 
-Salam,
-Nur Hidayat
+Salam, <br/>
+**Nur Hidayat**
