@@ -27,7 +27,9 @@ Pemrosesan data kemudian dilakukan di file `pegawai-proses.php` berdasarkan dari
 ## Menghindari *SQL Injection*
 Untuk menghidari serangan *SQL Injection* maka kita harus mengubah pola pembuatan perintah sql menggunakan *string concatenation* seperti berikut ini, 
 
-`$sql = 'select * from pegawai where id=' . $id;`
+```
+$sql = 'select * from pegawai where id=' . $id;
+```
 
 menggunakan *parameter binding* seperti berikut ini, 
 
