@@ -2,51 +2,85 @@
 require_once('config.php');
 require_once('koneksi.php');
 
-// tambah pegawai
+// prepare data to process
+$id = htmlspecialchars($_POST['id']??0);
+$nip = htmlspecialchars($_POST['nip']??'');
+$nama = htmlspecialchars($_POST['nama']??'');
+$alamat = htmlspecialchars($_POST['alamat']??'');
+$tmplhr = htmlspecialchars($_POST['tempat_lahir']??'');
+$tgllhr = htmlspecialchars($_POST['tanggal_lahir']??'');
+
+/**
+ * Proses tambah pegawai baru
+ */
 if ($_POST['action']=='create') {
     $sql = "
         insert into 
         pegawai ( nip,nama,alamat,tempat_lahir,tanggal_lahir ) 
-        values (
-            '".htmlspecialchars($_POST['nip'])."',
-            '".htmlspecialchars($_POST['nama'])."',
-            '".htmlspecialchars($_POST['alamat'])."',
-            '".htmlspecialchars($_POST['tempat_lahir'])."',
-            '".htmlspecialchars($_POST['tanggal_lahir'])."'
-        ) ";
-    $rs = mysqli_query($db_conn,$sql);
-    if ($rs)
+        values ( ?, ?, ?, ?, ?) 
+    ";
+
+    // prepare sql statement
+    $stmt = mysqli_prepare($db_conn, $sql);
+    // bind parameter to prevent sql injection
+    mysqli_stmt_bind_param($stmt, 'sssss', $nip, $nama, $alamat, $tmplhr, $tgllhr);
+    // execute sql statement
+    $result = mysqli_stmt_execute($stmt);
+    // clean up memory
+    mysqli_stmt_close($stmt);
+    // give feedback to user
+    if ($result)
         print 'Insert Data Pegawai BERHASIL!';
     else
         print 'Insert Data Pegawai GAGAL!';
 }
 
-// edit pegawai pegawai
+/**
+ * Proses edit pegawai pegawai lama
+ */
 if ($_POST['action']=='edit') {
     $sql = "
         update pegawai 
-        set nip = '".htmlspecialchars($_POST['nip'])."',
-            nama = '".htmlspecialchars($_POST['nama'])."',
-            alamat = '".htmlspecialchars($_POST['alamat'])."',
-            tempat_lahir = '".htmlspecialchars($_POST['tempat_lahir'])."',
-            tanggal_lahir = '".htmlspecialchars($_POST['tanggal_lahir'])."'
-        where id = '".htmlspecialchars($_POST['id'])."'
-        ";
-    $rs = mysqli_query($db_conn,$sql);
-    if ($rs)
+        set nip = ?,
+            nama = ?,
+            alamat = ?,
+            tempat_lahir = ?,
+            tanggal_lahir = ?
+        where id = ?
+    ";
+    // prepare sql statement
+    $stmt = mysqli_prepare($db_conn, $sql);
+    // bind parameter to prevent sql injection
+    mysqli_stmt_bind_param($stmt, 'sssssd', $nip, $nama, $alamat, $tmplhr, $tgllhr, $id);
+    // execute sql statement
+    $result = mysqli_stmt_execute($stmt);
+    // clean up memory
+    mysqli_stmt_close($stmt);
+    // give feedback to user
+    if ($result)
         print 'Update Data Pegawai BERHASIL!';
     else
         print 'Update Data Pegawai GAGAL!';
 }
 
-// delete pegawai pegawai
+/**
+ * Proses delete pegawai pegawai lama
+ */
 if ($_POST['action']=='delete') {
     $sql = "
         delete from pegawai 
-        where id = '".htmlspecialchars($_POST['id'])."'
-        ";
-    $rs = mysqli_query($db_conn,$sql);
-    if ($rs)
+        where id = ?
+    ";
+    // prepare sql statement
+    $stmt = mysqli_prepare($db_conn, $sql);
+    // bind parameter to prevent sql injection
+    mysqli_stmt_bind_param($stmt, 'd', $id);
+    // execute sql statement
+    $result = mysqli_stmt_execute($stmt);
+    // clean up memory
+    mysqli_stmt_close($stmt);
+    // give feedback to user
+    if ($result)
         print 'Delete Data Pegawai BERHASIL!';
     else
         print 'Delete Data Pegawai GAGAL!';
