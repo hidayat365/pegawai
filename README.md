@@ -33,7 +33,7 @@ $rs = mysqli_query($db_conn, $sql);
 $row = mysqli_fetch_assoc($rs);
 ```
 
-menggunakan *parameter binding* seperti berikut ini, 
+menjadi menggunakan *parameter binding* seperti berikut ini, 
 
 ```
 // prepare sql statement
@@ -65,7 +65,7 @@ Dengan menggunaan *parameter binding*, maka otomatis *driver* mysqli akan melaku
 ![Tampilan Edit Data](images/screenshot-edit.png?raw=true "Tampilan Edit Data")
 
 # Pengembangan
-Silakan clone dan buat PR 
+Silakan clone dan buat PR (***pull request***)
 
 &nbsp;
 # Akhirul Kalam
