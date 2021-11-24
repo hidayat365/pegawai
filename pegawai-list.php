@@ -20,7 +20,7 @@ $rs = mysqli_query($db_conn,$sql);
 // lakukan penjagaan, antisipasi error di database
 if (!$rs) die ('Query GAGAL: ' . mysqli_error($db_conn));
 
-    // mulai proses data
+// mulai proses data
 $nomor = 0;
 while ($row = mysqli_fetch_assoc($rs)) {
 ?>
