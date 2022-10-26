@@ -22,6 +22,8 @@ if ($_POST['action']=='create') {
 
     // prepare sql statement
     $stmt = mysqli_prepare($db_conn, $sql);
+    // pengecekan
+    if (!$stmt) die('Prepare Query GAGAL: ' . mysqli_error($db_conn));
     // bind parameter to prevent sql injection
     mysqli_stmt_bind_param($stmt, 'sssss', $nip, $nama, $alamat, $tmplhr, $tgllhr);
     // execute sql statement

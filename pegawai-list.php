@@ -16,6 +16,8 @@
 // kemudian simpan ke array $data
 $sql = 'select * from pegawai order by nip';
 $rs = mysqli_query($db_conn,$sql);
+if (!$rs) die('Query GAGAL: ' . mysqli_error($db_conn));
+
 $nomor = 0;
 while ($row = mysqli_fetch_assoc($rs)) {
 ?>
